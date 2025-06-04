@@ -23,8 +23,10 @@ async function fetchStarredRepos(username) {
   }));
 }
 
+const sendEmail = require("./sendEmail");
+
 fetchStarredRepos(USERNAME)
   .then((repos) => {
-    console.log(repos);
+    return sendEmail(repos);
   })
   .catch(console.error);
