@@ -1,9 +1,10 @@
 require("dotenv").config();
 const axios = require("axios");
+const sendEmail = require("./sendEmail");
 
 const PAT_GITHUB_TOKEN = process.env.PAT_GITHUB_TOKEN;
-const USERNAME = "OleksandrZadvornyi"; // or any target username
-const sendEmail = require("./sendEmail");
+const USERNAME = process.env.TARGET_USERNAME;
+const REPO_LIMIT = parseInt(process.env.REPO_LIMIT || "10", 10);
 
 async function fetchStarredRepos(username) {
   const response = await axios.get(
@@ -20,6 +21,7 @@ async function fetchStarredRepos(username) {
   const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000); // 7 days ago
 
   const recentRepos = response.data
+    .slice(0, REPO_LIMIT)
     .filter((entry) => new Date(entry.starred_at) >= oneWeekAgo)
     .map((entry) => ({
       name: entry.repo.full_name,

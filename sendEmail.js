@@ -1,6 +1,8 @@
 require("dotenv").config();
 const nodemailer = require("nodemailer");
 
+const subject = process.env.EMAIL_SUBJECT || "Your GitHub Star Digest";
+
 const transporter = nodemailer.createTransport({
   host: "smtp.mailgun.org",
   port: 587,
@@ -54,7 +56,7 @@ async function sendEmail(repos) {
   const info = await transporter.sendMail({
     from: process.env.EMAIL_FROM,
     to: process.env.EMAIL_TO,
-    subject: "Your GitHub Star Digest",
+    subject,
     html: formatEmailContent(repos),
   });
 
