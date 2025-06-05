@@ -1,7 +1,7 @@
 require("dotenv").config();
 const axios = require("axios");
 
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const PAT_GITHUB_TOKEN = process.env.PAT_GITHUB_TOKEN;
 const USERNAME = "OleksandrZadvornyi"; // or any target username
 const sendEmail = require("./sendEmail");
 
@@ -10,7 +10,7 @@ async function fetchStarredRepos(username) {
     `https://api.github.com/users/${username}/starred`,
     {
       headers: {
-        Authorization: `token ${GITHUB_TOKEN}`,
+        Authorization: `token ${PAT_GITHUB_TOKEN}`,
         "User-Agent": "newsletter-script",
         Accept: "application/vnd.github.v3.star+json",
       },
