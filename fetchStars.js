@@ -3,6 +3,7 @@ const axios = require("axios");
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const USERNAME = "OleksandrZadvornyi"; // or any target username
+const sendEmail = require("./sendEmail");
 
 async function fetchStarredRepos(username) {
   const response = await axios.get(
@@ -11,22 +12,25 @@ async function fetchStarredRepos(username) {
       headers: {
         Authorization: `token ${GITHUB_TOKEN}`,
         "User-Agent": "newsletter-script",
+        Accept: "application/vnd.github.v3.star+json",
       },
     }
   );
 
-  return response.data.map((repo) => ({
-    name: repo.full_name,
-    description: repo.description,
-    url: repo.html_url,
-    stars: repo.stargazers_count,
-  }));
+  const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000); // 7 days ago
+
+  const recentRepos = response.data
+    .filter((entry) => new Date(entry.starred_at) >= oneWeekAgo)
+    .map((entry) => ({
+      name: entry.repo.full_name,
+      description: entry.repo.description,
+      url: entry.repo.html_url,
+      stars: entry.repo.stargazers_count,
+    }));
+
+  return recentRepos;
 }
 
-const sendEmail = require("./sendEmail");
-
 fetchStarredRepos(USERNAME)
-  .then((repos) => {
-    return sendEmail(repos);
-  })
+  .then((repos) => sendEmail(repos))
   .catch(console.error);
