@@ -1,6 +1,6 @@
 # ✨ GitHub Stars Newsletter
 
-Automatically send yourself a weekly email digest of repositories you've starred on GitHub — beautifully formatted and fully automated.
+Automatically send yourself a weekly email digest of repositories you've starred on GitHub – beautifully formatted and fully automated.
 
 ![GitHub Stars Newsletter](https://img.shields.io/github/actions/workflow/status/OleksandrZadvornyi/github-stars-newsletter/newsletter.yml?branch=main&label=send-newsletter)
 
@@ -33,7 +33,7 @@ npm install
 Create a `.env` file:
 
 ```bash
-GITHUB_TOKEN=ghp_xxx                     # GitHub Personal Access Token
+PAT_GITHUB_TOKEN=ghp_xxx                     # GitHub Personal Access Token
 MAILGUN_USER=postmaster@sandboxXXXX.mailgun.org
 MAILGUN_PASS=your_mailgun_smtp_password
 EMAIL_FROM=Your Name <you@example.com>
@@ -62,16 +62,16 @@ This project includes a ready-to-use GitHub Actions workflow.
 
 Go to **Settings > Secrets and variables > Actions** and add the following:
 
-| Secret Name     | Value                       |
-| --------------- | --------------------------- |
-| GITHUB_TOKEN    | Your GitHub PAT             |
-| MAILGUN_USER    | SMTP login from Mailgun     |
-| MAILGUN_PASS    | SMTP password from Mailgun  |
-| EMAIL_FROM      | Sender email (name + email) |
-| EMAIL_TO        | Recipient email             |
-| TARGET_USERNAME | GitHub username to track    |
-| REPO_LIMIT      | Number of repos to include  |
-| EMAIL_SUBJECT   | Email subject line          |
+| Secret Name         | Value                       |
+| ------------------- | --------------------------- |
+| PAT_GITHUB_TOKEN    | Your GitHub PAT             |
+| MAILGUN_USER        | SMTP login from Mailgun     |
+| MAILGUN_PASS        | SMTP password from Mailgun  |
+| EMAIL_FROM          | Sender email (name + email) |
+| EMAIL_TO            | Recipient email             |
+| TARGET_USERNAME     | GitHub username to track    |
+| REPO_LIMIT          | Number of repos to include  |
+| EMAIL_SUBJECT       | Email subject line          |
 
 ### 2. Workflow Details
 
@@ -93,7 +93,7 @@ Located at `.github/workflows/send-newsletter.yml`. Runs every Monday at 09:00 U
 
 ## 💡 Inspiration
 
-This project was built for automation, exploration and fun. It helps you stay in touch with projects you've starred — in your inbox, every week.
+This project was built for automation, exploration and fun. It helps you stay in touch with projects you've starred – in your inbox, every week.
 
 ## 📄 License
 
