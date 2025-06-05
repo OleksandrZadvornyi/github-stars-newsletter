@@ -26,6 +26,9 @@ async function fetchStarredRepos(username) {
       description: entry.repo.description,
       url: entry.repo.html_url,
       stars: entry.repo.stargazers_count,
+      language: entry.repo.language,
+      updated: entry.repo.updated_at,
+      isFork: entry.repo.fork,
     }));
 
   return recentRepos;

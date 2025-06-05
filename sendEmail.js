@@ -12,35 +12,39 @@ const transporter = nodemailer.createTransport({
 
 function formatEmailContent(repos) {
   const items = repos
-    .map(
-      (repo) => `
-      <li style="margin-bottom: 20px;">
-        <a href="${
-          repo.url
-        }" style="font-size: 16px; font-weight: bold; color: #0366d6;">${
-        repo.name
-      }</a><br/>
-        <span style="font-size: 14px; color: #586069;">
-          ${repo.description || "No description available."}
-        </span><br/>
-        <span style="font-size: 13px; color: #6a737d;">
-          ⭐ ${repo.stars.toLocaleString()} stars
-        </span>
-      </li>
-    `
-    )
+    .map((repo) => {
+      const updatedDate = new Date(repo.updated).toLocaleDateString("en-US");
+      return `
+        <li style="border: 1px solid #e1e4e8; border-radius: 6px; padding: 16px; margin-bottom: 16px; list-style: none;">
+          <a href="${
+            repo.url
+          }" style="font-size: 16px; font-weight: bold; color: #0366d6; text-decoration: none;">
+            ${repo.name}
+          </a>
+          ${repo.isFork ? '<span style="color: #6a737d;"> (fork)</span>' : ""}
+          <p style="margin: 8px 0 4px; font-size: 14px; color: #586069;">
+            ${repo.description || "No description provided."}
+          </p>
+          <div style="font-size: 13px; color: #6a737d;">
+            ⭐ ${repo.stars.toLocaleString()}
+            ${repo.language ? ` • 🧠 ${repo.language}` : ""}
+            • 📅 Updated ${updatedDate}
+          </div>
+        </li>
+      `;
+    })
     .join("");
 
   return `
-    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; padding: 20px;">
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; padding: 24px;">
       <h2 style="color: #24292e;">🌟 Your Weekly Starred Repos</h2>
-      <p style="font-size: 14px; color: #586069;">Here are the repositories you starred this week:</p>
-      <ul style="padding-left: 20px; list-style: none;">
+      <p style="font-size: 14px; color: #586069;">Here’s a summary of what you starred this week:</p>
+      <ul style="padding: 0; margin: 0;">
         ${items}
       </ul>
-      <p style="font-size: 12px; color: #999999; margin-top: 40px;">
-        You're receiving this email because you starred repositories on GitHub this week.<br/>
-        Made with ❤️ by a Node.js script.
+      <hr style="margin: 40px 0;" />
+      <p style="font-size: 12px; color: #999;">
+        Generated with ❤️ using GitHub API + Node.js.
       </p>
     </div>
   `;
