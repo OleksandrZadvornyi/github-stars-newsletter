@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/OleksandrZadvornyi/github-stars-newsletter/compare/v0.1.6...v0.1.7) (2025-06-05)
+
+
+### 📝 Documentation
+
+* fix variable name in `README.md` ([98ee8f0](https://github.com/OleksandrZadvornyi/github-stars-newsletter/commit/98ee8f041ad02c7752a98c8045fc9b2bf9275599))
+
 ### [0.1.6](https://github.com/OleksandrZadvornyi/github-stars-newsletter/compare/v0.1.5...v0.1.6) (2025-06-05)
 
 
