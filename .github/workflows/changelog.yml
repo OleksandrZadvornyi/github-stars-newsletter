@@ -51,12 +51,27 @@ jobs:
 
       - name: Extract latest changelog entry
         run: |
-          awk '
-            /^# Changelog/ { next }
-            /^All notable/ { next }
-            /^### \[[0-9]+\.[0-9]+\.[0-9]+\]/ { if (p) exit; p=1; print "## 🚀 Whats Changed\n" }
-            p { print }
-          ' CHANGELOG.md > RELEASE_NOTES.md
+          #!/bin/bash
+          echo "## 🚀 What's Changed" > RELEASE_NOTES.md
+          echo "" >> RELEASE_NOTES.md
+
+          # Skip header lines and extract first version block
+          in_version=false
+          while IFS= read -r line; do
+            if [[ $line =~ ^##+ ]]; then
+              if [[ $line =~ \[[0-9]+\.[0-9]+\.[0-9]+\] ]]; then
+                if [ "$in_version" = true ]; then
+                  break
+                fi
+                in_version=true
+                continue
+              fi
+            fi
+            
+            if [ "$in_version" = true ] && [[ ! $line =~ ^(# Changelog|All notable) ]]; then
+              echo "$line" >> RELEASE_NOTES.md
+            fi
+          done < CHANGELOG.md
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
