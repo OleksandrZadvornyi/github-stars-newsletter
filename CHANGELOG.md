@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/OleksandrZadvornyi/github-stars-newsletter/compare/v0.1.3...v0.1.4) (2025-06-05)
+
+
+### ✨ Features
+
+* improve HTML formatting of email content ([2c57e78](https://github.com/OleksandrZadvornyi/github-stars-newsletter/commit/2c57e788f719ce1ed76273eb5e3cdc947545150c))
+* show repo lang, update date, and fork info ([14904db](https://github.com/OleksandrZadvornyi/github-stars-newsletter/commit/14904db1660e633eebeaf56a83a8f1be07c7d7a9))
+
 ### [0.1.3](https://github.com/OleksandrZadvornyi/github-stars-newsletter/compare/v0.1.2...v0.1.3) (2025-06-05)
 
 
