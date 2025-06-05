@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/OleksandrZadvornyi/github-stars-newsletter/compare/v0.1.4...v0.1.5) (2025-06-05)
+
+
+### ✨ Features
+
+* make username, subject, limit configurable ([eb0ecce](https://github.com/OleksandrZadvornyi/github-stars-newsletter/commit/eb0ecce5eba8b7d8142225372ee6b86f9451fb69))
+
+
+### 📝 Documentation
+
+* create `README.md` ([8efe267](https://github.com/OleksandrZadvornyi/github-stars-newsletter/commit/8efe267331f6f4c02355ae87956e6ccbb6ce4c2c))
+
 ### [0.1.4](https://github.com/OleksandrZadvornyi/github-stars-newsletter/compare/v0.1.3...v0.1.4) (2025-06-05)
 
 
