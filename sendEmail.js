@@ -14,22 +14,35 @@ function formatEmailContent(repos) {
   const items = repos
     .map(
       (repo) => `
-    <li style="margin-bottom: 10px;">
-      <a href="${repo.url}" target="_blank"><strong>${
+      <li style="margin-bottom: 20px;">
+        <a href="${
+          repo.url
+        }" style="font-size: 16px; font-weight: bold; color: #0366d6;">${
         repo.name
-      }</strong></a><br />
-      <span>${repo.description || "No description"}</span><br />
-      ⭐ ${repo.stars}
-    </li>
-  `
+      }</a><br/>
+        <span style="font-size: 14px; color: #586069;">
+          ${repo.description || "No description available."}
+        </span><br/>
+        <span style="font-size: 13px; color: #6a737d;">
+          ⭐ ${repo.stars.toLocaleString()} stars
+        </span>
+      </li>
+    `
     )
     .join("");
 
   return `
-    <h2>⭐ Your Weekly Starred Repos</h2>
-    <ul style="font-family: sans-serif; padding-left: 20px;">
-      ${items}
-    </ul>
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; padding: 20px;">
+      <h2 style="color: #24292e;">🌟 Your Weekly Starred Repos</h2>
+      <p style="font-size: 14px; color: #586069;">Here are the repositories you starred this week:</p>
+      <ul style="padding-left: 20px; list-style: none;">
+        ${items}
+      </ul>
+      <p style="font-size: 12px; color: #999999; margin-top: 40px;">
+        You're receiving this email because you starred repositories on GitHub this week.<br/>
+        Made with ❤️ by a Node.js script.
+      </p>
+    </div>
   `;
 }
 
