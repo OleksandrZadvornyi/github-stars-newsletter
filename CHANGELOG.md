@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/OleksandrZadvornyi/github-stars-newsletter/compare/v0.1.5...v0.1.6) (2025-06-05)
+
+
+### 📝 Documentation
+
+* create LICENSE ([dcb6814](https://github.com/OleksandrZadvornyi/github-stars-newsletter/commit/dcb68142b8882ec473aaeeea10eef9c0908c6b76))
+
 ### [0.1.5](https://github.com/OleksandrZadvornyi/github-stars-newsletter/compare/v0.1.4...v0.1.5) (2025-06-05)
 
 
