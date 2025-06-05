@@ -1,0 +1,32 @@
+name: Weekly GitHub Stars Newsletter
+
+on:
+  schedule:
+    - cron: "0 9 * * MON" # Every Monday at 09:00 UTC
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+jobs:
+  send-newsletter:
+    runs-on: ubuntu-latest
+
+    env:
+      PAT_GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN }}
+      MAILGUN_USER: ${{ secrets.MAILGUN_USER }}
+      MAILGUN_PASS: ${{ secrets.MAILGUN_PASS }}
+      EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+      EMAIL_TO: ${{ secrets.EMAIL_TO }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run script to send newsletter
+        run: node fetchStars.js
