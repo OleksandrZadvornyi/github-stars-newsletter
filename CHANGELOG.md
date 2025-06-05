@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/OleksandrZadvornyi/github-stars-newsletter/compare/v0.1.1...v0.1.2) (2025-06-05)
+
+
+### 🐛 Bug Fixes
+
+* rename github token variable ([c231f77](https://github.com/OleksandrZadvornyi/github-stars-newsletter/commit/c231f771ac7fe1debbd82dbf5b084581620c31ff))
+
+
+### 👷 CI/CD
+
+* add GitHub Actions workflow for weekly emails ([1a73c55](https://github.com/OleksandrZadvornyi/github-stars-newsletter/commit/1a73c5571baad01279f7e71973de57a5f94428d2))
+
 ### 0.1.1 (2025-06-05)
 
 
